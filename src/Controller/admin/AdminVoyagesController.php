@@ -17,14 +17,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminVoyagesController extends AbstractController {
 
-    #[Route("/admin", name: "admin.voyages")]
-    public function index(): Response {
-        $visites = $this->repository->findAllOrderBy('datecreation', 'DESC');
-        return $this->render("admin/admin.voyages.html.twig", [
-                    'visites' => $visites
-        ]);
-    }
-
     /**
      * 
      * @var VisiteRepository
@@ -37,6 +29,14 @@ class AdminVoyagesController extends AbstractController {
      */
     public function __construct(VisiteRepository $repository) {
         $this->repository = $repository;
+    }
+
+    #[Route("/admin", name: "admin.voyages")]
+    public function index(): Response {
+        $visites = $this->repository->findAllOrderBy('datecreation', 'DESC');
+        return $this->render("admin/admin.voyages.html.twig", [
+                    'visites' => $visites
+        ]);
     }
 
     #[Route("/admin/suppr/{id}", name: 'admin.voyage.suppr')]
@@ -62,7 +62,7 @@ class AdminVoyagesController extends AbstractController {
                     'formvisite' => $formVisite->createView()
         ]);
     }
-    
+
     #[Route("/admin/ajout", name: 'admin.voyage.ajout')]
     public function ajout(Request $request): Response {
         $visite = new Visite();

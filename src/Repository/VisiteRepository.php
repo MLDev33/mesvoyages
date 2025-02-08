@@ -52,7 +52,7 @@ class VisiteRepository extends ServiceEntityRepository {
     }
     
     /**
-     * 
+     * Supprime une visite
      * @param Visite $visite
      * @return void
      */
