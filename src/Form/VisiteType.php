@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Environnement;
-use App\Entity\Visite;
 use DateTime;
+use App\Entity\Visite;
+use App\Entity\Environnement;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
