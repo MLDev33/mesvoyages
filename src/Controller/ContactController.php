@@ -39,8 +39,9 @@ class ContactController extends AbstractController {
 
     public function sendEmail(MailerInterface $mailer, Contact $contact) {
         $email = (new Email())
-                ->from($contact->getEmail())
-                ->to('contact@mesvoyages.com')
+                ->from('emailtestcontactml@gmail.com') // adresse email "from" vérifier imposé par Sendgrid
+                ->replyTo($contact->getEmail()) // permet de répondre à l'utilisateur
+                ->to('emailtestcontactml@gmail.com')
                 ->subject('Messsage du site de voyages')
                 ->html($this->renderView(
                                 'pages/_email.html.twig', [
